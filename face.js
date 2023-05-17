@@ -30,158 +30,7 @@ function segment_average(segment) {
 
 // This where you define your own face object
 function Face() {
-  this.Eyechange = 1;
-  this.MouthWidth = 1;
-  this.FaceMode = 0;
-
-   this.Red_color = color(255, 174, 174); // all the color that go ino the color_value array
-   this.Blue_color = color(148, 157, 255);
-   this.Yellow_color = color(255, 243, 199);
-   this.Green_color = color(162, 252, 187);
-   this.Orange_color = color(255, 145, 99);
-
-   this.Red_color2 = color(255, 100, 100);// all the colors that go into the color2 array
-   this.Blue_color2Blue_color2 = color(131, 152, 238);
-   this.Yellow_color2 = color(255, 226, 122);
-   this.Green_color2 = color(135, 230, 189);
-   this.Orange_color2 = color(232, 121, 102);
-
-   this.Color_value = [this.Red_color, this.Blue_color, this.Yellow_color, this.Green_color, this.Orange_color]; // this allows color to be chosen through out each face that is chosen
-   this.Color2 = [this.Red_color2, this.Blue_color2, this.Yellow_color2, this.Green_color2,this.Orange_color2]; // This is a secondary color that accents features like the mouth, eyebrows, nose and eyes.
    
-
-  let faceSize = 20 // these are used for some of the variables that stay the same throughout each face.
-  let ArcXval = 0;
-  let eyeX = -5;
-  let eyeX2 = 5;
-  let FaceX = 0;
-  let arcwidth = 2;
-  let archeight = 2;
-  let eyeY = -3;
-  let noseY = 2;
-  let mouthY = 8;
-  
-  // rotation in degrees
-  angleMode(DEGREES);
-  
-
-  if(this.FaceMode === 0 || this.FaceMode === 1 || this.FaceMode === 2 || this.FaceMode === 3 || this.FaceMode === 4){ // This allows the faces to switch between the different emotions 
-    // head
-    noStroke();
-    fill(this.Color_value[this.FaceMode]);  // sets color, allows to swap between each color for the emotionns
-    ellipse(FaceX, 0, faceSize, faceSize);
-  }
-  
-  if(this.FaceMode === 0){//Grumpy
-
-    //eyes
-    fill(this.Color2[this.FaceMode]);
-    arc(eyeX, eyeY, arcwidth+this.Eyechange, archeight+this.Eyechange, 180, 360, CHORD);
-    arc( eyeX2, eyeY, arcwidth+this.Eyechange, archeight+this.Eyechange, 180, 360, CHORD);
-   
-    //nose
-    arc(ArcXval, noseY, arcwidth, 1, 180, 360, CHORD);
-
-    //Mouth
-    arc(ArcXval, mouthY, 8+this.MouthWidth, 1, 180, 360, CHORD);
-
-    //eyebrows
-    stroke(this.Color2[this.FaceMode])
-    line(3,-5, 7, -6);
-    line(-3,-5, -7, -6);
-
-  }
-
-  if(this.FaceMode === 1){//Gloomy
-    let arcwidth = 6; // sets the width and height for the eyes
-    let archeight = 6;
-    let eyeY = -2;
-    fill(this.Color2[this.FaceMode]);
-    
-    //eyes
-    
-    arc(eyeX, eyeY, arcwidth, archeight+Eyechange, 180, 360, CHORD);
-    arc( eyeX2, eyeY, arcwidth, archeight+Eyechange, 180, 360, CHORD);
-   
-    //nose
-    arc(ArcXval, noseY, 5, 2, 180, 360, CHORD);
-    stroke(this.Color2[this.FaceMode]);
-    noFill();
-    
-
-    //Mouth
-    strokeWeight(1);
-    arc(ArcXval, mouthY, 5+this.MouthWidth, 5, 180, 360);
-    
-
-  }
-
-  if(this.FaceMode === 2){//Glad
-
-    let mouthY = 5; 
-
-    
-    //eyes
-    fill(this.Color2[this.FaceMode]);
-    arc(eyeX, eyeY, 3+Eyechange, 5+Eyechange, 360, 0);
-    arc( eyeX2, eyeY, 3+Eyechange, 5+Eyechange, 360, 0);
-   
-    //nose
-    arc(ArcXval, noseY, 5, 2, 360, 0);
-    
-    //Mouth
-    stroke(this.Color2[this.FaceMode]);
-    arc(ArcXval, mouthY, 8+this.MouthWidth, 8, 360, 180, CHORD);
-
-  }
-
-  if(this.FaceMode === 3){//disgust
-    let eyeX = -5;//sets the values that change each face
-    let eyeX2 = 4;
-    let mouthY = 7;
-    let eyeY = -3.25;
-
-    
-    //eyes
-    fill(this.Color2[this.FaceMode]);
-    arc(eyeX, eyeY, 1+Eyechange, 1+Eyechange, 360, 0);
-    arc( eyeX2, eyeY, 1+Eyechange, 1+Eyechange, 360, 0);
-   
-    //nose
-    arc(ArcXval, noseY, 1, 2, 360, 0);
-    
-    //Mouth
-    noFill();
-    stroke(this.Color2[this.FaceMode]);
-    arc(1, mouthY, 8+this.MouthWidth, 1, 180, 225);
-
-    //eyebrows 
-    strokeWeight(.5);
-    line(-5.2, -3.9, -3, -3.9);
-    line(4, -3.9, 6.2, -3.9);
-    
-  }
-
-  if(this.FaceMode === 4){//confidence
-    let eyeX = -5;
-    let eyeX2 = 4;
-    let mouthY = 7;
-
-    //eyes
-    fill(this.Color2[this.FaceMode]);
-    arc(eyeX, eyeY, 2+Eyechange, 2+Eyechange, 360, 0);
-    arc( eyeX2, eyeY, 2+Eyechange, 2+Eyechange, 360, 0);
-   
-    //nose
-    arc(ArcXval, noseY, 1, 2, 360, 0);
-    
-    //Mouth
-    noFill();
-    stroke(this.Color2[this.FaceMode]);
-    strokeWeight(1)
-    arc(0, mouthY, 8+this.MouthWidth, 1, 36, 180);
-    
-  }
 
    
 
@@ -203,7 +52,158 @@ function Face() {
    *    bottom_lip, top_lip, nose_tip, nose_bridge, 
    */  
   this.draw = function(positions) {
-    ellipse(0,0,1)
+   this.Eyechange = 1;
+   this.MouthWidth = 1;
+   this.FaceMode = 0;
+
+   this.Red_color = color(255, 174, 174); // all the color that go ino the color_value array
+   this.Blue_color = color(148, 157, 255);
+   this.Yellow_color = color(255, 243, 199);
+   this.Green_color = color(162, 252, 187);
+   this.Orange_color = color(255, 145, 99);
+
+   this.Red_color2 = color(255, 100, 100);// all the colors that go into the color2 array
+   this.Blue_color2Blue_color2 = color(131, 152, 238);
+   this.Yellow_color2 = color(255, 226, 122);
+   this.Green_color2 = color(135, 230, 189);
+   this.Orange_color2 = color(232, 121, 102);
+
+   this.Color_value = [this.Red_color, this.Blue_color, this.Yellow_color, this.Green_color, this.Orange_color]; // this allows color to be chosen through out each face that is chosen
+   this.Color2 = [this.Red_color2, this.Blue_color2, this.Yellow_color2, this.Green_color2,this.Orange_color2]; // This is a secondary color that accents features like the mouth, eyebrows, nose and eyes.
+   
+
+   this.faceSize = 5; // these are used for some of the variables that stay the same throughout each face.
+   this.ArcXval = 0;
+   this.eyeX = -1;
+   this.eyeX2 = 1;
+   this.FaceX = 0;
+   this.arcwidth = 1;
+   this.archeight = 1;
+   this.eyeY = 0;
+   this.noseY = 1.5;
+   this.mouthY = 2;
+  
+  // rotation in degrees
+  angleMode(DEGREES);
+  
+
+  if(this.FaceMode === 0 || this.FaceMode === 1 || this.FaceMode === 2 || this.FaceMode === 3 || this.FaceMode === 4){ // This allows the faces to switch between the different emotions 
+    // head
+    noStroke();
+    fill(this.Color_value[this.FaceMode]);  // sets color, allows to swap between each color for the emotionns
+    ellipse(this.FaceX, 0, this.faceSize, this.faceSize);
+  }
+  
+  if(this.FaceMode === 0){//Grumpy
+
+    //eyes
+    fill(this.Color2[this.FaceMode]);
+    arc(this.eyeX, this.eyeY, this.arcwidth, this.archeight, 180, 360, CHORD);
+    arc( this.eyeX2, this.eyeY, this.arcwidth, this.archeight, 180, 360, CHORD);
+   
+    //nose
+    arc(this.ArcXval, this.noseY, this.arcwidth-.5, 0.5, 180, 360, CHORD);
+
+    //Mouth
+    arc(this.ArcXval, this.mouthY, 1, .5, 180, 360, CHORD);
+
+    //eyebrows
+    stroke(this.Color2[this.FaceMode])
+    line(3,-5, 7, -6);
+    line(-3,-5, -7, -6);
+
+  }
+
+  if(this.FaceMode === 1){//Gloomy
+    this.arcwidth = 6; // sets the width and height for the eyes
+    this.archeight = 6;
+    this.eyeY = -2;
+    fill(this.Color2[this.FaceMode]);
+    
+    //eyes
+    
+    arc(this.eyeX, this.eyeY, this.arcwidth, this.archeight+this.Eyechange, 180, 360, CHORD);
+    arc( this.eyeX2, this.eyeY, this.arcwidth, this.archeight+this.Eyechange, 180, 360, CHORD);
+   
+    //nose
+    arc(this.ArcXval, this.noseY, 5, 2, 180, 360, CHORD);
+    stroke(this.Color2[this.FaceMode]);
+    noFill();
+    
+
+    //Mouth
+    strokeWeight(1);
+    arc(this.ArcXval,this.mouthY, 5+this.MouthWidth, 5, 180, 360);
+    
+
+  }
+
+  if(this.FaceMode === 2){//Glad
+
+    this.mouthY = 5; // sets the y value for the mouth
+
+    
+    //eyes
+    fill(this.Color2[this.FaceMode]);
+    arc(this.eyeX, this.eyeY, 3+this.Eyechange, 5+this.Eyechange, 360, 0);
+    arc(this.eyeX2, this.eyeY, 3+this.Eyechange, 5+this.Eyechange, 360, 0);
+   
+    //nose
+    arc(this.ArcXval, this.noseY, 5, 2, 360, 0);
+    
+    //Mouth
+    stroke(this.Color2[this.FaceMode]);
+    arc(this.ArcXval, this.mouthY, 8+this.MouthWidth, 8, 360, 180, CHORD);
+
+  }
+
+  if(this.FaceMode === 3){//disgust
+    this.eyeX = -5;//sets the values that change each face
+    this.eyeX2 = 4;
+    this.mouthY = 7;
+    this.eyeY = -3.25;
+
+    //eyes
+    fill(this.Color2[this.FaceMode]);
+    arc(this.eyeX, this.eyeY, 1+this.Eyechange, 1+this.Eyechange, 360, 0);
+    arc( this.eyeX2, this.eyeY, 1+this.Eyechange, 1+this.Eyechange, 360, 0);
+   
+    //nose
+    arc(this.ArcXval, this.noseY, 1, 2, 360, 0);
+    
+    //Mouth
+    noFill();
+    stroke(this.Color2[this.FaceMode]);
+    arc(1, this.mouthY, 8+this.MouthWidth, 1, 180, 225);
+
+    //eyebrows 
+    strokeWeight(.5);
+    line(-5.2, -3.9, -3, -3.9);
+    line(4, -3.9, 6.2, -3.9);
+    
+  }
+
+  if(this.FaceMode === 4){//confidence
+     this.eyeX = -5;
+     this.eyeX2 = 4;
+     this.mouthY = 7;
+
+    //eyes
+    fill(this.Color2[this.FaceMode]);
+    arc(this.eyeX, this.eyeY, 2+this.Eyechange, 2+this.Eyechange, 360, 0);
+    arc( this.eyeX2, this.eyeY, 2+this.Eyechange, 2+this.Eyechange, 360, 0);
+   
+    //nose
+    arc(this.ArcXval, this.noseY, 1, 2, 360, 0);
+    
+    //Mouth
+    noFill();
+    stroke(this.Color2[this.FaceMode]);
+    strokeWeight(1)
+    arc(0, this.mouthY, 8+this.MouthWidth, 1, 36, 180);
+    
+  }
+    
    
   }
 
@@ -229,7 +229,7 @@ function Face() {
 
   /* set internal properties based on list numbers 0-100 */
   this.setProperties = function(settings) {
-    this.num_eyes = int(map(settings[0], 0, 100, 1, 2));
+    this.FaceMode = int(map(settings[0], 0, 100, 0, 5));
     this.eye_shift = map(settings[1], 0, 100, -2, 2);
     this.mouth_size = map(settings[2], 0, 100, 0.5, 8);
   }
@@ -237,9 +237,9 @@ function Face() {
   /* get internal properties as list of numbers 0-100 */
   this.getProperties = function() {
     let settings = new Array(3);
-    settings[0] = map(this.num_eyes, 1, 2, 0, 100);
-    settings[1] = map(this.eye_shift, -2, 2, 0, 100);
-    settings[2] = map(this.mouth_size, 0.5, 8, 0, 100);
+    settings[0] = map(this.FaceMode, 0, 5, 0, 100);
+    // settings[1] = map(this.eye_shift, -2, 2, 0, 100);
+    // settings[2] = map(this.mouth_size, 0.5, 8, 0, 100);
     return settings;
   }
 }
