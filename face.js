@@ -56,20 +56,29 @@ function Face() {
    this.MouthWidth = 1;
    
  
-   this.Red_color = color(255, 174, 174); // all the color that go ino the color_value array
-   this.Blue_color = color(148, 157, 255);
-   this.Yellow_color = color(255, 243, 199);
-   this.Green_color = color(162, 252, 187);
-   this.Orange_color = color(255, 145, 99);
+   this.Red_color = color(255,149,149); // femal base color for skin
+   this.darkRed = color(255, 98, 98);
+   this.MidDarkRed = color(255, 133,133);
+   this.LightRed= color(255, 174, 174);
 
-   this.Red_color2 = color(255, 100, 100);// all the colors that go into the color2 array
-   this.Blue_color2Blue_color2 = color(131, 152, 238);
-   this.Yellow_color2 = color(255, 226, 122);
-   this.Green_color2 = color(135, 230, 189);
-   this.Orange_color2 = color(232, 121, 102);
+   this.Blue_color = color(148, 157, 255);// Male Base color for skin
+   this.DarkBlue_color = color(72,87,255);
+   this.MidDarkBlue_color = color(123,134,255);
+   this.lightBlue_color = color(174, 180, 255);
+   
+   this.Red_color2 = color(255, 75, 75);//Female Highlights
+   this.Dark_red = color(255, 0, 0);
+   this.MidRed = color(255,45,45);
+   this.light_Red = color(255,100,100);
+   
+   this.Blue_color_dark = color(52, 64, 229);//Male highlights
+   this.Blue_color2 = color(131, 152, 238);
+   this.semi_dark_blue = color(100, 100, 255);
+   this.Light_blue_color = color(155, 155, 255);
+   
 
-   this.Color_value = [this.Red_color, this.Blue_color, this.Yellow_color, this.Green_color, this.Orange_color]; // this allows color to be chosen through out each face that is chosen
-   this.Color2 = [this.Red_color2, this.Blue_color2, this.Yellow_color2, this.Green_color2,this.Orange_color2]; // This is a secondary color that accents features like the mouth, eyebrows, nose and eyes.
+   this.Face_color = [this.darkRed, this.MidDarkRed, this.Red_color, this.LightRed, this.DarkBlue_color, this.MidDarkBlue_color, this.Blue_color, this.lightBlue_color]; // Array for face color
+   this.Color2 = [this.Dark_red,  this.MidRed, this.Red_color2, this.light_Red,  this.Blue_color_dark,  this.semi_dark_blue, this.Blue_color2, this.Light_blue_color]; // array for mouth, eyebrows, nose and eyes.
    
 
    this.faceSize = 5; // these are used for some of the variables that stay the same throughout each face.
@@ -86,9 +95,12 @@ function Face() {
 
    this.averageRighteye = segment_average(positions.right_eye);
    this.averageLefteye = segment_average(positions.left_eye);
+   
    this.averageBottomLip = segment_average(positions.bottom_lip);
-   this.averageNoseLip = segment_average(positions.nose_tip); 
-
+  //  this.averageNoseTip = segment_average(positions.nose_tip); 
+   this.averageNoseBridge = segment_average(positions.nose_bridge);
+   this.averageRightEyebrow = segment_average(positions.right_eyebrow);
+   this.averageLeftEyebrow = segment_average(positions.left_eyebrow)
 
   //his.faceColour = 0; 
   // rotation in degrees
@@ -98,7 +110,7 @@ function Face() {
  //if(this.FaceMode === 0 || this.FaceMode === 1 || this.FaceMode === 2 || this.FaceMode === 3 || this.FaceMode === 4){ // This allows the faces to switch between the different emotions 
     // head
     noStroke();
-    fill(this.Color_value[this.FaceMode]);  // sets color, allows to swap between each color for the emotionns
+    fill( this.Face_color[this.FaceMode]);  // sets color, allows to swap between each color for the emotionns
     ellipse(this.FaceX, 0, this.faceSize, this.faceSize);
   //}
             
@@ -114,15 +126,22 @@ function Face() {
     arc( this.averageRighteye[0], this.averageRighteye[1], this.arcwidth, this.archeight, 180, 360, CHORD);
    
     //nose
-    arc(this.averageNoseLip[0], this.averageNoseLip[0], this.arcwidth, 1, 180, 360, CHORD);
+    arc(this.averageNoseBridge[0], this.averageNoseBridge[1], this.arcwidth, 1, 180, 360, CHORD);
 
     //Mouth
-    arc(this.averageBottomLip[0], this.averageBottomLip[0], 1, .5, 180, 360, CHORD);
+    arc(this.averageBottomLip[0], this.averageBottomLip[1], 1.5, .5, 360, 180, CHORD);
+
+    //eyebrows
+    
+    stroke(this.Color2[this.FaceMode]);
+    noFill()
+    arc(this.averageRightEyebrow[0], this.averageRightEyebrow[0], 1, .5, 180, 0)
+    arc(this.averageLeftEyebrow[0], this.averageLeftEyebrow[1], 1, .5, 180, 0)
 
     //eyebrows
     // stroke(this.Color2[this.FaceMode])
-    // line(positions.right_eyebrow[0][0], positions.right_eyebrow[0][0], positions.right_eyebrow[0][0], positions.right_eyebrow[0][0]);
-    // line(positions.left_eyebrow[2][0], positions.left_eyebrow[0][2], positions.left_eyebrow[0][0], positions.left_eyebrow[0][1]);
+    // line(positions.right_eyebrow[0], positions.right_eyebrow[0], positions.right_eyebrow[0], positions.right_eyebrow[0]);
+    // line(positions.left_eyebrow[2], positions.left_eyebrow[2], positions.left_eyebrow[0], positions.left_eyebrow[1]);
 
   // }
 
@@ -241,7 +260,7 @@ function Face() {
 
   /* set internal properties based on list numbers 0-100 */
   this.setProperties = function(settings) {
-    this.FaceMode = int(map(settings[0], 0, 100, 0, 4));
+    this.FaceMode = int(map(settings[0], 0, 100, 0, 7));
     // this.eye_shift = map(settings[1], 0, 100, -2, 2);
     // this.mouth_size = map(settings[2], 0, 100, 0.5, 8);
   }
