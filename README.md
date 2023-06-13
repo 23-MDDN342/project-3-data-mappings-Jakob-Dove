@@ -2,4 +2,4 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11103536&assignment_repo_type=AssignmentRepo)
 ## 2023 MDDN342 Assignment 3: Data Mappings
 
-I have got colors to match skin tone and to differentiate the gender of the faces.  Next is eyebrows!
+Got my colors down, I am making my faces color different by red and blue.  red for female and blue for male.  more smile functinality. and eyebrows are done.
