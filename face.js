@@ -347,7 +347,7 @@ function Face() {
   /* get internal properties as list of numbers 0-100 */
   this.getProperties = function() {
     let settings = new Array(5);
-    settings[0] = int(map(this.FaceMode, 0, 7, 0, 7));
+    settings[0] = int(map(this.FaceMode, 0, 7, 0, 100));
     settings[1] = map(this.RightEyeBrowType, 0, 3, 0, 100);
     settings[2] = map(this.LeftEyeBrowType, 0, 3, 0, 100);
     settings[3] = map(this.LeftEyeType, 0, 3, 0, 100);
