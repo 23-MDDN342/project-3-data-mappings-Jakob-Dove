@@ -13,7 +13,7 @@ var NUM_SLIDERS = 6;
 // here's some examples for colors used
 
 
-const stroke_color = [95, 52, 8];
+
 
 // example of a global function
 // given a segment, this returns the average point [x, y]
@@ -88,16 +88,9 @@ function Face() {
    this.Face_color = [this.darkRed, this.MidDarkRed, this.Red_color, this.LightRed, this.DarkBlue_color, this.MidDarkBlue_color, this.Blue_color, this.lightBlue_color]; // Array for face color
    this.Color2 = [this.Dark_red,  this.MidRed, this.Red_color2, this.light_Red,  this.Blue_color_dark,  this.semi_dark_blue, this.Blue_color2, this.Light_blue_color]; // array for mouth, eyebrows, nose and eyes.
 
-   this.faceSize = 5; // these are used for some of the variables that stay the same throughout each face.
-   this.ArcXval = 0;
-   this.eyeX = -1;
-   this.eyeX2 = 1;
+   this.faceSize = 5; // these are used for to keep the base face the same throughout each face change.
    this.FaceX = 0;
-   this.arcwidth = 1/2;
-   this.archeight = 1;
-   this.eyeY = 0;
-   this.noseY = 1.5;
-   this.mouthY = 2;
+   
 
    this.averageRighteye = segment_average(positions.right_eye);
    this.averageLefteye = segment_average(positions.left_eye);
@@ -121,9 +114,7 @@ function Face() {
     arc(this.averageNoseBridge[0], this.averageNoseBridge[0], .5, .5, 180, 360, CHORD); 
     
     
-    // console.log(width/2000);
-    // console.log(height/1046);
-    
+   
     
        //right eyebrows
     
@@ -134,70 +125,70 @@ function Face() {
     }
 
     if(this.RightEyeBrowType === 1){//Medium right eyebrows
-    //  stroke(this.Color2[this.FaceMode]);
+     stroke(this.Color2[this.FaceMode]);
      noFill();
      arc(this.averageRightEyebrow[0], this.averageRightEyebrow[1], 1, .5, 190, 350);//medium right eyebrow
      
     }
 
       if(this.RightEyeBrowType === 2){
-    // stroke(this.Color2[this.FaceMode]);
+    stroke(this.Color2[this.FaceMode]);
     noFill();
     arc(this.averageRightEyebrow[0], this.averageRightEyebrow[1], 2, .5, 190, 350);//long right eyebrow
     }
     
        if(this.RightEyeBrowType === 3){ //Right non exsistent eyebrows
-     //stroke(this.Color2[this.FaceMode]);
+        stroke(this.Color2[this.FaceMode]);
      noFill();
      arc(this.averageRightEyebrow[0], this.averageRightEyebrow[1], 1, .5, 215, 350);
     }
 
       //Left eyebrows
     if(this.LeftEyeBrowType === 0){//Short left EyeBrow
-   // stroke(this.Color2[this.FaceMode]);
+       stroke(this.Color2[this.FaceMode]);
     noFill()
     arc(this.averageLeftEyebrow[0], this.averageLeftEyebrow[1], 1, .5, 270, 360);//left eyebrow
     }
 
     if(this.LeftEyeBrowType === 1){//small left eyebrows
-    //  stroke(this.Color2[this.FaceMode]);
+         stroke(this.Color2[this.FaceMode]);
      noFill();
      arc(this.averageLeftEyebrow[0], this.averageLeftEyebrow[1], 1, .5, 190, 350);//small left eye
     }
 
       if(this.LeftEyeBrowType === 2){
-    //stroke(this.Color2[this.FaceMode]);
+      stroke(this.Color2[this.FaceMode]);
     noFill();
     arc(this.averageLeftEyebrow[0], this.averageLeftEyebrow[1], 1.5, .5, 190, 350);//long Left eyebrow
     }
 
     if(this.LeftEyeBrowType === 3){ //Left non exsistent eyebrows
-     //stroke(this.Color2[this.FaceMode]);
+     stroke(this.Color2[this.FaceMode]);
      noFill();
      arc(this.averageLeftEyebrow[0], this.averageLeftEyebrow[1], 1, .5, 180, 320);
     }
 
        //Left Eyes
      if( this.LeftEyeType === 0){
-        //fill(this.Color2[this.FaceMode]);
+        fill(this.Color2[this.FaceMode]);
         arc(this.averageLefteye[1], this.averageLefteye[0], .5, .5, 180, 360, CHORD);//Half eyes
      }
     
       //eyes
       if(this.LeftEyeType === 1){
-        //fill(this.Color2[this.FaceMode]);
+        fill(this.Color2[this.FaceMode]);
         ellipse(this.averageLefteye[1],this.averageLefteye[0], .5,.25)//Oval Eye
       }
 
           //eyes
       if(this.LeftEyeType === 2){
-       // fill(this.Color2[this.FaceMode]);//small eyes
+        fill(this.Color2[this.FaceMode]);//small eyes
         arc(this.averageLefteye[1], this.averageLefteye[0], 1, 1, 180, 360, CHORD);
       }
 
       //eyes
        if(this.LeftEyeType === 3){
-        //fill(this.Color2[this.FaceMode]);//small upside down eyes
+        fill(this.Color2[this.FaceMode]);//small upside down eyes
         arc(this.averageLefteye[0], this.averageLefteye[1], .5, .5, 0, 180, CHORD);
       }
       
@@ -205,120 +196,118 @@ function Face() {
 
       //Right eyes
      if( this.RightEyeType === 0){
-        //fill(this.Color2[this.FaceMode]);//half eyes right side
+        fill(this.Color2[this.FaceMode]);//half eyes right side
        arc(this.averageRighteye[0], this.averageRighteye[1], .5, .5, 180, 360, CHORD);//Half eyes right side
      }
    
        //eyes
       if(this.RightEyeType === 1){
-        //fill(this.Color2[this.FaceMode]);
+        fill(this.Color2[this.FaceMode]);
          ellipse(this.averageRighteye[0],this.averageRighteye[1], .5,.25)//Oval Eye
       }
 
         //eyes
       if(this.RightEyeType === 2){
-       // fill(this.Color2[this.FaceMode]);//small helf eyes right side
+        fill(this.Color2[this.FaceMode]);//small helf eyes right side
         arc(this.averageRighteye[0], this.averageRighteye[1], 1, 1, 180, 360, CHORD);
       }
 
       //eyes
       if(this.RightEyeType === 3){
-       // fill(this.Color2[this.FaceMode]);//small upside down eyes squinting
+        fill(this.Color2[this.FaceMode]);//small upside down eyes squinting
         arc(this.averageRighteye[0], this.averageRighteye[1], .5, .5, 0, 180, CHORD);
       }
 
            // //Mouth
     if(this.MouthType === 0){//small smile
-     // fill(this.Color2[this.FaceMode]);
+      fill(this.Color2[this.FaceMode]);
       arc(this.averageBottomLip[0], this.averageBottomLip[1], 1.5, .5, 360, 180, CHORD);
     }
     
     if(this.MouthType === 1){
     //Mouth
-    
-     //stroke(this.Color2[this.FaceMode]); //small sad mouth
-      //fill(this.Color2[this.FaceMode])
+     stroke(this.Color2[this.FaceMode]); //small sad mouth
+      fill(this.Color2[this.FaceMode])
      arc(this.averageBottomLip[0], this.averageBottomLip[1], this.MouthWidth, .5, 180, 360);
     }
     
     if(this.MouthType === 2){
     //Mouth
-   // stroke(this.Color2[this.FaceMode]);//small smile
-   // fill(this.Color2[this.FaceMode]);
+   stroke(this.Color2[this.FaceMode]);//small smile
+   fill(this.Color2[this.FaceMode]);
     arc(this.averageBottomLip[0], this.averageBottomLip[1], 1.5, 1, 360, 180, CHORD);
     }
 
     if(this.MouthType === 3){
       //Mouth
-     // stroke(this.Color2[this.FaceMode]);//small smile with stroke
-     // noFill();
+     stroke(this.Color2[this.FaceMode]);//small smile with stroke
+     noFill();
       arc(this.averageBottomLip[0], this.averageBottomLip[1], 1.5, .5, 360, 180);
       }
     
   if(this.MouthType === 4){ //Nuetralish face
     //Mouth
-   // noFill(); 
-   // stroke(this.Color2[this.FaceMode]);
+   noFill(); 
+   stroke(this.Color2[this.FaceMode]);
     arc(this.averageBottomLip[0], this.averageBottomLip[1], 2.5, .5, 180, 360);
   }
 
     //Mouth
      if(this.MouthType === 5){ // smiley face
-   // fill(this.Color2[this.FaceMode]);
+   fill(this.Color2[this.FaceMode]);
     arc(this.averageBottomLip[0], this.averageBottomLip[1], 1, .5, 360, 180, CHORD);
   }
 
  // Mouth
   if(this.MouthType === 6){ //big sad face
-    //stroke(this.Color2[this.FaceMode]);
+    stroke(this.Color2[this.FaceMode]);
     arc(this.averageBottomLip[0], this.averageBottomLip[1], 2,1, 180, 360);
   }
 
   if(this.MouthType === 7){
     //Mouth
-    //stroke(this.Color2[this.FaceMode]);//small frown with stroke
-    //noFill()
+    stroke(this.Color2[this.FaceMode]);//small frown with stroke
+    noFill()
     arc(this.averageBottomLip[0], this.averageBottomLip[1], 1.5, .5, 180, 360);
     }
 
     if(this.MouthType === 8){ //nuetral face
-      //stroke(this.Color2[this.FaceMode]);
-      //noFill();
+      stroke(this.Color2[this.FaceMode]);
+      noFill();
       arc(this.averageBottomLip[0], this.averageBottomLip[1], 2,.1, 180, 360);
     }
 
     if(this.MouthType === 9){ //Smirk face starting from the left
-     // stroke(this.Color2[this.FaceMode]);
-     // noFill();
+     stroke(this.Color2[this.FaceMode]);
+     noFill();
       arc(this.averageBottomLip[0], this.averageBottomLip[1], 2.5, .5, 18, 180);
     }
 
     if(this.MouthType === 10){ //Smirk face opposite side
-     // stroke(this.Color2[this.FaceMode]);
-     // noFill();
+     stroke(this.Color2[this.FaceMode]);
+     noFill();
       arc(this.averageBottomLip[0], this.averageBottomLip[1], 2.5, .5, 360, 160);
     }
 
     if(this.MouthType === 11){ // smiley face
-     // stroke(this.Color2[this.FaceMode]);
-     // noFill();
+     stroke(this.Color2[this.FaceMode]);
+     noFill();
       arc(this.averageBottomLip[0], this.averageBottomLip[1], 1, .25, 360, 180);
     }
    
     if(this.MouthType === 12){ // duck lips
-     // fill(this.Color2[this.FaceMode]);
-      
+     fill(this.Color2[this.FaceMode]);
       ellipse(this.averageBottomLip[0],this.averageBottomLip[1], .5,.25)//Oval mouth
     }
 
     if(this.MouthType === 13){ //small smirk face
-     // stroke(this.Color2[this.FaceMode]);
-      //noFill();
+     stroke(this.Color2[this.FaceMode]);
+      noFill();
       arc(this.averageBottomLip[0], this.averageBottomLip[1], 1,.05, 360, 180);
     }
     if(this.MouthType === 14){ //small smirk face
-      //stroke(this.Color2[this.FaceMode]);
-      //noFill();
+      stroke(this.Color2[this.FaceMode]);
+      noFill();
       arc(this.averageBottomLip[0], this.averageBottomLip[1], 1,.1, 180, 360);
     }
 
@@ -358,7 +347,7 @@ function Face() {
   /* get internal properties as list of numbers 0-100 */
   this.getProperties = function() {
     let settings = new Array(5);
-    settings[0] = int(map(this.FaceMode, 0, 4, 0, 100));
+    settings[0] = int(map(this.FaceMode, 0, 7, 0, 7));
     settings[1] = map(this.RightEyeBrowType, 0, 3, 0, 100);
     settings[2] = map(this.LeftEyeBrowType, 0, 3, 0, 100);
     settings[3] = map(this.LeftEyeType, 0, 3, 0, 100);

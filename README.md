@@ -2,4 +2,4 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11103536&assignment_repo_type=AssignmentRepo)
 ## 2023 MDDN342 Assignment 3: Data Mappings
 
-Got my colors down, I am making my faces color different by red and blue.  red for female and blue for male.  more smile functinality. and eyebrows are done.
+This project is called Data Mappings. In this project we had to make faces and features that could change.  These features included skin tone, eyes, mouth, and eyebrows.  Once we had feature that could change and were mapped to sliders we started training a list of faces.  Once those faces have been trained there was a training face quiz you could do.  once all the training was done you could animate the face and get to  work with your camera.  
